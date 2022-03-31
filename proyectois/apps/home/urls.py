@@ -16,12 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+<<<<<<< HEAD
 from .views import baseview,elementsview,genericview, indexcview, entrenamientoview
+=======
+from .views import baseview,elementsview,genericview, indexcview
+>>>>>>> 010dbd25795798f3c29e9a9e2503d09639385489
 
 urlpatterns = [
     path('base/', baseview.as_view(), name='base'),
     path('elements/', elementsview.as_view(), name='elements'),
     path('generic/', genericview.as_view(), name='generic'),
     path('index/', indexcview.as_view(), name='index'),
+<<<<<<< HEAD
     path('entrenamiento/', entrenamientoview.as_view(), name='entrenamiento'),
+=======
+>>>>>>> 010dbd25795798f3c29e9a9e2503d09639385489
 ]
