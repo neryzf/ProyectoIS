@@ -10,3 +10,9 @@ class elementsview(TemplateView):
 
 class genericview(TemplateView):
     template_name='generic.html'
+
+class indexcview(TemplateView):
+    template_name='index.html'
+
+class entrenamientoview(TemplateView):
+    template_name='entrenamiento.html'

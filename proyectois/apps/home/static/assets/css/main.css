@@ -78,7 +78,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  background: #ffffff; }
+  background: #F0E9D2; }
   body.is-preload *, body.is-preload *:before, body.is-preload *:after, body.is-resizing *, body.is-resizing *:before, body.is-resizing *:after {
     -moz-animation: none !important;
     -webkit-animation: none !important;
@@ -2075,8 +2075,8 @@ button,
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  border-bottom: solid 5px #f56a6a;
-  padding: 6em 0 1em 0;
+  border-bottom: solid 5px #678983;
+  padding: 6em 0 0 0;
   position: relative; }
   #header > * {
     -moz-flex: 1;
@@ -2093,10 +2093,10 @@ button,
     text-align: right; }
   @media screen and (max-width: 1680px) {
     #header {
-      padding-top: 5em; } }
+      padding-top: 3.5em; } }
   @media screen and (max-width: 736px) {
     #header {
-      padding-top: 6.5em; }
+      padding-top: 4.5em; }
       #header .logo {
         font-size: 1.25em;
         margin: 0; }
@@ -2109,14 +2109,20 @@ button,
 
 /* Banner */
 #banner {
-  padding: 6em 0 4em 0 ;
+  padding: 6em 0 4em 0;
   display: -moz-flex;
   display: -webkit-flex;
   display: -ms-flex;
-  display: flex; }
+  display: flex;
+  color: white;
+  border-radius: 0 0 40px 40px;
+  background:#181D31 ; 
+}
   #banner h1 {
+    color: white;
     margin-top: -0.125em; }
   #banner .content {
+    padding: 0 0 0 5%;
     -moz-flex-grow: 1;
     -webkit-flex-grow: 1;
     -ms-flex-grow: 1;
@@ -2127,6 +2133,7 @@ button,
     flex-shrink: 1;
     width: 50%; }
   #banner .image {
+    padding: 0 4% 0 0;
     -moz-flex-grow: 0;
     -webkit-flex-grow: 0;
     -ms-flex-grow: 0;
@@ -2139,7 +2146,7 @@ button,
     margin: 0 0 2em 4em;
     width: 50%; }
     #banner .image img {
-      height: 100%;
+      height: 90%;
       -moz-object-fit: cover;
       -webkit-object-fit: cover;
       -ms-object-fit: cover;
@@ -2271,3 +2278,19 @@ button,
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
+
+
+    #sesion{
+      
+      
+      padding-left: 85%;
+      
+    }
+    #inicio{
+      text-align: center;
+      border-radius: 40px 40px 0 0;
+      padding: 10% 0% 5% 5%;
+      background: #E6DDC4;
+    }
+
+    .example {background-color: rgb(12, 0, 37);}

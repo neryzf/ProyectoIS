@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{%block titulo %}           
+<title>Entrenamiento</title>
+{% endblock %}
+
+{%block header%}<a href="{% url 'entrenamiento' %}" class="logo"><strong>Bienvenido</strong> A la sección de entrenamiento</a>
+									
+									<ul class="icons">
+										
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+									</ul>
+{%endblock%}
+
+{%block banner%}
+{%endblock%}
+{%block sec1%}
+{%endblock%}
+
+{%block sec2%}
+<section>
+    <header class="major">
+        <h2>Áreas</h2>
+    </header>
+    <div class="posts">
+        <article>
+            <a href="#" class="image"> <img src="{% static 'images/entr.png' %}" alt="" /></a>
+            <h3>Entrenamiento Completo</h3>
+            <p>En esta sección se realizará un Entrenamiento Completo de todas las áreas de matematica.</p>
+            <ul class="actions">
+                <li><a href="#" class="button">Ingresar</a></li>
+            </ul>
+        </article>
+        <article>
+            <a href="#" class="image"><img src="{% static 'images/aritmetica.png' %}" alt="" /></a>
+            <h3>Aritmética</h3>
+            <p>En esta sección se realizará un entrenamiento en el área de aritmetica.</p>
+            <ul class="actions">
+                <li><a href="#" class="button">Ingresar</a></li>
+            </ul>
+        </article>
+        <article>
+            <a href="#" class="image"><img src="{% static 'images/algebra.png' %}" alt="" /></a>
+            <h3>Álgebra</h3>
+            <p>En esta sección se realizará un entrenamiento en el área de álgebra.</p>
+            <ul class="actions">
+                <li><a href="#" class="button">Ingresar</a></li>
+            </ul>
+        </article>
+        <article>
+            <a href="#" class="image"><img src="{% static 'images/geometria.png' %}" alt="" /></a>
+            <h3>Geometría</h3>
+            <p>En esta sección se realizará un entrenamiento en el área de Geometría.</p>
+            <ul class="actions">
+                <li><a href="#" class="button">Ingresar</a></li>
+            </ul>
+        </article>
+        
+    </div>
+</section>
+</div>
+</div>
+{%endblock%}
