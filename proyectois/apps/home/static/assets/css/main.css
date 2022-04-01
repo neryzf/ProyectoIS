@@ -1745,7 +1745,7 @@ button,
     -ms-flex-shrink: 1;
     flex-shrink: 1;
     margin: 0 0 6em 6em;
-    position: relative;
+    position:relative;
     width: calc(33.33333% - 6em); }
     .posts article:before {
       background: rgba(210, 215, 217, 0.75);
@@ -1772,7 +1772,7 @@ button,
       margin: 0 0 2em 0; }
       .posts article .image img {
         display: block;
-        width: 100%; }
+        width: 100%;}
   @media screen and (min-width: 1681px) {
     .posts article:nth-child(3n + 1):before {
       display: none; }
@@ -2288,13 +2288,13 @@ button,
     }
     #inicio{
       text-align: center;
+      
       border-radius: 40px 40px 0 0;
       padding: 10% 0% 5% 5%;
       background: #E6DDC4;
-<<<<<<< HEAD
+    }
+    #inicio.h3{
+      text-transform: capitalize;
     }
 
     .example {background-color: rgb(12, 0, 37);}
-=======
-    }
->>>>>>> 010dbd25795798f3c29e9a9e2503d09639385489
