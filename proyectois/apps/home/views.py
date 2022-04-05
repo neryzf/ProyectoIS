@@ -16,3 +16,6 @@ class indexcview(TemplateView):
 
 class entrenamientoview(TemplateView):
     template_name='entrenamiento.html'
+
+class resultadosview(TemplateView):
+    template_name='resultados.html'

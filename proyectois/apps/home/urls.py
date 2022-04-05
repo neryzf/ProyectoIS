@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
-from .views import baseview,elementsview,genericview, indexcview, entrenamientoview
+from .views import baseview,elementsview,genericview, indexcview, entrenamientoview, resultadosview
 
 urlpatterns = [
     path('base/', baseview.as_view(), name='base'),
@@ -24,4 +24,5 @@ urlpatterns = [
     path('generic/', genericview.as_view(), name='generic'),
     path('index/', indexcview.as_view(), name='index'),
     path('entrenamiento/', entrenamientoview.as_view(), name='entrenamiento'),
+    path('resultados/', resultadosview.as_view(), name='resultados'),
 ]

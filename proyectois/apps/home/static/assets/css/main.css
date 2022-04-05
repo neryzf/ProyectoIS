@@ -89,6 +89,8 @@ body {
     -ms-transition: none !important;
     transition: none !important; }
 
+
+
 /* Type */
 body, input, select, textarea {
   color: #7f888f;
@@ -2296,3 +2298,17 @@ button,
    
 
     .example {background-color: rgb(12, 0, 37);}
+
+table{
+  background-color: white;
+  text-align: left;
+  margin-top: 15px;
+}
+
+tr:nth-child(even){
+  background-color: #ddd;
+}
+tr:hover td{
+  background-color: #7E97A3;
+  color: white;
+}
