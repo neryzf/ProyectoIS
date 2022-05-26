@@ -9,6 +9,8 @@
     <a href="#" >
     <div id="inicio">
         <h3>Iniciar Sesion</h3>
+        <body>
+            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
     </div>
 </a>
 </div>
@@ -16,7 +18,9 @@
 
 {%block menu%} {%endblock%}
 {%block imagen1%}<img src="{% static 'images/Optimize-Study-Time-1.png' %}" alt="" />{%endblock%}
-{%block sec1%}{%endblock%}
+{%block sec1%}
+
+{%endblock%}
 {%block sec2%}
 <section>
     <header class="major">

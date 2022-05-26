@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from apps.home import * 
+from telnetlib import AUTHENTICATION
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,6 +34,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,8 +43,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.home',
-]
+ 
+ 
 
+    'django.contrib.sites',
+    'oauth_app',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+] 
+
+SITE_ID=1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -55,7 +70,7 @@ ROOT_URLCONF = 'proyectois.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS':  [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,7 +135,25 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+CORS_ORIGIN_WHITELIST=[ 'https://localhost:8000' ]
+
+
+
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+]
+
+
+
+
+LOGIN_REDIRECT_URL= '/home/index/'
+LOGOUT_REDIRECT_URL= ''
