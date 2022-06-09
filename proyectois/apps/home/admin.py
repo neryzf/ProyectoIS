@@ -1,14 +1,19 @@
 from django.contrib import admin
-from .models import grado, seccion, establecimiento, imagenes, videos, ejemplos,area, tema, pregunta, respuesta
+
+from .models import UsuarioAlumnos,Seccion, Grado,Estadisticas,estadisticasPreguntas,repPreguntas,respuestas,temas,areas,ejemplos,videos,imagens
 # Register your models here.
 
-admin.site.register(grado)
-admin.site.register(seccion)
-admin.site.register(establecimiento)
-admin.site.register(imagenes)
-admin.site.register(videos)
-admin.site.register(ejemplos)
-admin.site.register(area)
-admin.site.register(tema)
-admin.site.register(pregunta)
-admin.site.register(respuesta)
+admin.site.register(UsuarioAlumnos),
+admin.site.register(Seccion),
+admin.site.register(Grado),
+admin.site.register(Estadisticas),
+admin.site.register(estadisticasPreguntas),
+admin.site.register(repPreguntas),
+admin.site.register(respuestas),
+admin.site.register(temas),
+admin.site.register(areas),
+admin.site.register(ejemplos),
+admin.site.register(videos),
+admin.site.register(imagens)
+
+

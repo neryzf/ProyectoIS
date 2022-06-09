@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block header%}
+
+{%endblock%}
+{%block sesion%} 
+
+{%endblock%}
+
+{%block tituloIndex%}
+<header>
+    <h1>LOGIN</h1>
+</header>
+{%endblock%}
+{%block ParrafoTitulo%}
+<form id = "formLogin" method='POST' action="{% url 'login' %}">
+    {% csrf_token %}
+
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      {{ form.username }}  
+      <label class="form-label" for="form2Example1">{{ form.username.label_tag}}</label>
+    </div>
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      {{form.password}}
+      <label class="form-label" for="form2Example2">{{ form.password.label_tag}}</label>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block mb-4">Ingresar</button>
+
+</form>
+{%endblock%}
+
+
+
+{%block menu%} {%endblock%}
+{%block imagen1%}<img src="https://images.pexels.com/photos/256467/pexels-photo-256467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />{%endblock%}
+{%block sec1%}{%endblock%}
+{%block sec2%}
+{%endblock%}

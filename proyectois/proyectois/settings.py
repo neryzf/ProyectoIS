@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+LOGIN_REDIRECT_URL = '/home/home'
+LOGOUT_REDIRECT_URL ='/home/index'
 # Application definition
 
 INSTALLED_APPS = [
@@ -76,8 +77,12 @@ WSGI_APPLICATION = 'proyectois.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'hopegt_Database',
+        'USER':'hopegt',
+        'PASSWORD':'Equipodinamita123',
+        'HOST':'207.244.236.213',
+        'PORT':'3306'
     }
 }
 
@@ -100,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+AUTH_USER_MODEL = 'home.UsuarioAlumnos'
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 

@@ -2312,3 +2312,17 @@ tr:hover td{
   background-color: #7E97A3;
   color: white;
 }
+
+#formLogin {
+  color:black;
+
+}
+#formLogin label{
+  color:white;
+
+}
+#ImagenLogin{
+  max-width: 80%;
+  
+
+}
