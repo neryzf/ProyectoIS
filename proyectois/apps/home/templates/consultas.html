@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block header%}
+
+{%endblock%}
+{%block sesion%} 
+<div id="sesion">
+    <a href="#" >
+    <div id="inicio">
+        <h3>Cerrar Sesion</h3>
+    </div>
+</a>
+</div>
+{%endblock%}
+
+{%block tituloIndex%}
+{{data}}
+
+
+{% for i in data %}
+<div>{{ i.id }} - {{ i.username }}</div>
+{% endfor %} 
+{%endblock%}
+{%block ParrafoTitulo%}
+<p>Esperamos que puedas aprender en nuestra pagina</p>{%endblock%}
+{%block menu%} {%endblock%}
+{%block imagen1%}<img id = "ImagenLogin" src="{% static 'images/loginImagen.png' %}"  />{%endblock%}
+{%block sec1%}
+{%endblock%}
+{%block sec2%}
+
+{%endblock%}
+
+

@@ -104,6 +104,8 @@ class estadisticasPreguntas(models.Model):
         on_delete=models.CASCADE,
         default=1
     )
+    def __str__(self):
+        return f'{self.IdEstadistica},{self.IdPregunta}'
 
 class repPreguntas(models.Model):
     pregunta= models.TextField('Preguntas',  max_length=5000)
@@ -119,6 +121,9 @@ class repPreguntas(models.Model):
         on_delete=models.CASCADE,
         default=1
     )
+    def __str__(self):
+        return f'{self.pregunta},{self.IdTema}'
+
 
 
 class respuestas(models.Model):
@@ -128,6 +133,9 @@ class respuestas(models.Model):
         on_delete=models.CASCADE,
         default=1
     )
+    def __str__(self):
+        return f'{self.respuesta},{self.IdTema}'
+
 
 
 
@@ -139,19 +147,30 @@ class temas(models.Model):
         on_delete=models.CASCADE,
         default=1
     )
+    def __str__(self):
+        return f'{self.temaNombre},{self.IdArea}'
 
 class areas(models.Model):
     nombreArea = models.CharField('Area', max_length=100, unique=True)
     informacion = models.TextField('Informacion', max_length=5000)
 
+    def __str__(self):
+        return f'{self.nombreArea}'
+
 class ejemplos(models.Model):
     titulo = models.CharField('Titulo', max_length=100, unique=True)
     contenido= models.TextField('Contenido', max_length=5000)
+
+    def __str__(self):
+        return f'{self.titulo}'
 
 class videos(models.Model):
     nombre = models.CharField('Nombre Video', max_length=100, unique=True)
     link = models.URLField('Link')
     creditos = models.CharField('Creditos', max_length=200)
+
+    def __str__(self):
+        return f'{self.nombre}'
 
 
 class imagens(models.Model):
@@ -160,3 +179,6 @@ class imagens(models.Model):
     creditos = models.CharField('Creditos', max_length=200)
 
     Idtema = models.ManyToManyField(temas)
+
+    def __str__(self):
+        return f'{self.nombre}'

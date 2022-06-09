@@ -1,10 +1,14 @@
 from email import message
 from multiprocessing import context
+from re import template
 from django import forms
+from django.db import connection
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView
 from django.contrib.sessions.models import Session
+from .models import *
+
 
 # Create your views here.
 
@@ -37,4 +41,14 @@ class loginView(LoginView):
         context['title'] = 'Iniciar sesion'
         return context
 
+class examenView(TemplateView):
+    template_name = 'examenapp.html'
+
+
+class consultasView(TemplateView):
+    template_name = 'consultas.html'
+    posts = UsuarioAlumnos.objects.raw("SELECT * FROM home_usuarioalumnos")
+    print(posts)
+    print(connection.queries)
+        
 
