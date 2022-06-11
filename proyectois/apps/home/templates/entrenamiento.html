@@ -14,29 +14,26 @@
 {%endblock%}
 
 {%block sec2%}
-<!-- Button trigger modal -->
-<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Iniciar con el entrenamiento</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="modal-body-confirm">
-     
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="">Save changes</button>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deseas comenzar con el entrenamiento?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body" id="modal-body-confirm">
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" id = "start-button" class="btn btn-success">Si</button>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+  
 
 
 {%for i in object_list%}
@@ -48,8 +45,8 @@
         <article>
             <p>{{i.informacion}}</p>
             <ul class="actions">
-                <button class="" data-pk="{{i.pk}}" data-quiz="{{i.nombreArea}}" data-toggle="modal"
-                    data-target="#exampleModal">{{i.nombreArea}}</button>
+                <button type ="button" class="btn btn-link modal-button" data-pk="../preguntas/{{i.pk}}" data-quiz="{{i.nombreArea}}" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">{{i.nombreArea}}</button>
             </ul>
         </article>
     </div>

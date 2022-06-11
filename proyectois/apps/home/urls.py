@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from xml.dom.minidom import NamedNodeMap
 from django import views
 from django.contrib import admin
 from django.urls import path,include
@@ -39,5 +40,7 @@ urlpatterns = [
 
 
     path('preguntas/<int:pk>/', preguntasView, name='preguntasView'),
+    path('preguntas/<int:pk>/data/', preguntasDatosView, name = 'quiz-data-view'),
+    path('preguntas/<int:pk>/save/',save_quiz_view, name='save-view'),
     # path('preguntas/', preguntas.as_view(), name='preguntas'),
 ]

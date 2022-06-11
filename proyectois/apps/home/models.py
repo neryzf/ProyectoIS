@@ -1,8 +1,10 @@
 from pyexpat import model
 from tkinter import CASCADE
 from turtle import ondrag
+from typing import List
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+import random
 
 # Create your models here.
 
@@ -84,7 +86,7 @@ class Grado(models.Model):
 
 class Estadisticas(models.Model):
     area = models.ForeignKey('areas', on_delete=models.CASCADE)
-    fecha = models.DateField('Fecha')
+    fecha = models.DateField('Fecha', auto_now_add=True)
     porcentaje = models.FloatField()
 
     IdAlumno= models.ForeignKey(
@@ -118,19 +120,19 @@ class repPreguntas(models.Model):
         default=1
     )
     def __str__(self):
-        return f'{self.pregunta},{self.IdArea}'
+        return f'{self.pregunta}'
     
-    def get_respuestas(self):
+    def get_respuestass(self):
         return self.respuestas_set.all()
 
 class respuestas(models.Model):
     respuesta = models.CharField('Respuestas', max_length=1000)
     correcta = models.BooleanField(default=False)
-    preguntas = models.ForeignKey(repPreguntas, on_delete=models.CASCADE)
+    preguntas = models.ForeignKey('repPreguntas', on_delete=models.CASCADE)
 
     
     def __str__(self):
-        return f"pregunta: {self.preguntas.pregunta},respuestas:{self.respuesta}, correcta:{self.correcta}"
+        return f"preguntas: {self.preguntas.pregunta},respuesta:{self.respuesta}, correcta:{self.correcta}"
 
 
 
@@ -159,8 +161,10 @@ class areas(models.Model):
     def __str__(self):
         return f'{self.nombreArea}'
     
-    def get_preguntas(self):
-        return self.preguntas_set.all()
+    def get_reppreguntas(self):
+        preguntas = list(self.reppreguntas_set.all())
+        random.shuffle(preguntas)
+        return preguntas[:10]
 
 class ejemplos(models.Model):
     titulo = models.CharField('Titulo', max_length=100, unique=True)

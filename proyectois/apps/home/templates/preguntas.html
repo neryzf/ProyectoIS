@@ -25,6 +25,11 @@
 <div><h1>{{ obj.nombreArea}}</h1></div>
 
 
+<form id="quiz-form" class="mt-3 mb-3">
+    {% csrf_token%}
+    <dir id="quiz-box"> </dir>
+    <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+</form>
 
 <!-- <form id ="quiz-form" class="mt-3 mb-3">
     
@@ -35,4 +40,12 @@
 {%endblock%}
 {%block sec2%}
 
+{%endblock%}
+{%block scripts%}
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/browser.min.js' %}"></script>
+<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+<script src="{% static 'assets/js/util.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script src="{% static 'assets/js/preguntas.js' %}" defer></script>
 {%endblock%}
