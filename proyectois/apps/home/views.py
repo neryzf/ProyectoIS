@@ -1,13 +1,11 @@
-from email import message
-from multiprocessing import context
-from re import template
-from django import forms
-from django.db import connection
+
 from django.shortcuts import redirect, render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.contrib.auth.views import LoginView
-from django.contrib.sessions.models import Session
+
 from .models import *
+
+from django.core.paginator import *
 
 
 # Create your views here.
@@ -24,8 +22,7 @@ class genericview(TemplateView):
 class indexcview(TemplateView):
     template_name='index.html'
 
-class entrenamientoview(TemplateView):
-    template_name='entrenamiento.html'
+
 
 class resultadosview(TemplateView):
     template_name='resultados.html'
@@ -44,11 +41,23 @@ class loginView(LoginView):
 class examenView(TemplateView):
     template_name = 'examenapp.html'
 
+""" class preguntas(ListView): 
+    model = repPreguntas
+    template_name = 'preguntas.html'
+   
+    paginate_by= 1
+    
+    def get_queryset(self, *args, **kwargs):
 
-class consultasView(TemplateView):
-    template_name = 'consultas.html'
-    posts = UsuarioAlumnos.objects.raw("SELECT * FROM home_usuarioalumnos")
-    print(posts)
-    print(connection.queries)
+        qs = super(preguntas, self).get_queryset(*args, **kwargs)
+        qs = qs.order_by("?")[:15]
+
         
+        return qs """
+class entrenamientoview(ListView):
+    model = areas
+    template_name='entrenamiento.html'
 
+def preguntasView(request, pk):
+    quiz = areas.objects.get(pk=pk)
+    return render(request, 'preguntas.html',{'obj':quiz})

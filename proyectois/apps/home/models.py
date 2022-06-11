@@ -1,4 +1,6 @@
+from pyexpat import model
 from tkinter import CASCADE
+from turtle import ondrag
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
@@ -81,17 +83,17 @@ class Grado(models.Model):
         return '%s' % (self.nombre)
 
 class Estadisticas(models.Model):
+    area = models.ForeignKey('areas', on_delete=models.CASCADE)
     fecha = models.DateField('Fecha')
-    porcentaje = models.DecimalField('Porcentaje', max_digits=5, decimal_places=2)
+    porcentaje = models.FloatField()
 
     IdAlumno= models.ForeignKey(
         'UsuarioAlumnos',
-        on_delete=models.CASCADE,
-        default=1
+        on_delete=models.CASCADE
     )
     
     def __str__(self):
-        return f'{self.IdAlumno},{self.porcentaje}'
+        return f'{self.pk}'
 
 class estadisticasPreguntas(models.Model):
     IdEstadistica= models.ForeignKey(
@@ -109,32 +111,26 @@ class estadisticasPreguntas(models.Model):
 
 class repPreguntas(models.Model):
     pregunta= models.TextField('Preguntas',  max_length=5000)
-
-    Idrespuesta= models.ForeignKey(
-        'respuestas',
-        on_delete=models.CASCADE,
-        default=1
-    )
     
-    IdTema= models.ForeignKey(
-        'temas',
+    IdArea= models.ForeignKey(
+        'areas',
         on_delete=models.CASCADE,
         default=1
     )
     def __str__(self):
-        return f'{self.pregunta},{self.IdTema}'
-
-
+        return f'{self.pregunta},{self.IdArea}'
+    
+    def get_respuestas(self):
+        return self.respuestas_set.all()
 
 class respuestas(models.Model):
-    respuesta = models.TextField('Respuestas', max_length=1000)
-    IdTema= models.ForeignKey(
-        'temas',
-        on_delete=models.CASCADE,
-        default=1
-    )
+    respuesta = models.CharField('Respuestas', max_length=1000)
+    correcta = models.BooleanField(default=False)
+    preguntas = models.ForeignKey(repPreguntas, on_delete=models.CASCADE)
+
+    
     def __str__(self):
-        return f'{self.respuesta},{self.IdTema}'
+        return f"pregunta: {self.preguntas.pregunta},respuestas:{self.respuesta}, correcta:{self.correcta}"
 
 
 
@@ -142,6 +138,8 @@ class respuestas(models.Model):
 class temas(models.Model):
     temaNombre = models.CharField('Tema', max_length=100, unique=True)
     informacion = models.TextField('Informacion', max_length=5000) 
+    videolink=models.URLField('Link')
+    imagen = models.FileField('Imagen')
     IdArea= models.ForeignKey(
         'areas',
         on_delete=models.CASCADE,
@@ -150,12 +148,19 @@ class temas(models.Model):
     def __str__(self):
         return f'{self.temaNombre},{self.IdArea}'
 
+    def get_videos(self):
+        return self.videos_set.all()
+
+
 class areas(models.Model):
     nombreArea = models.CharField('Area', max_length=100, unique=True)
     informacion = models.TextField('Informacion', max_length=5000)
 
     def __str__(self):
         return f'{self.nombreArea}'
+    
+    def get_preguntas(self):
+        return self.preguntas_set.all()
 
 class ejemplos(models.Model):
     titulo = models.CharField('Titulo', max_length=100, unique=True)
@@ -163,22 +168,3 @@ class ejemplos(models.Model):
 
     def __str__(self):
         return f'{self.titulo}'
-
-class videos(models.Model):
-    nombre = models.CharField('Nombre Video', max_length=100, unique=True)
-    link = models.URLField('Link')
-    creditos = models.CharField('Creditos', max_length=200)
-
-    def __str__(self):
-        return f'{self.nombre}'
-
-
-class imagens(models.Model):
-    nombre = models.CharField('Nombre', max_length=100, unique=True)
-    archivo = models.FileField('Archivo')
-    creditos = models.CharField('Creditos', max_length=200)
-
-    Idtema = models.ManyToManyField(temas)
-
-    def __str__(self):
-        return f'{self.nombre}'

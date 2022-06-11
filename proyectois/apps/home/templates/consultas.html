@@ -14,11 +14,15 @@
 {%endblock%}
 
 {%block tituloIndex%}
-{{data}}
+{% csrf_token %}
+<h1>{{pk}}    
+</h1>
 
 
 {% for i in data %}
-<div>{{ i.id }} - {{ i.username }}</div>
+
+<div><h1>{{ i.id }} - {{ i.temas }}</h1></div>
+
 {% endfor %} 
 {%endblock%}
 {%block ParrafoTitulo%}

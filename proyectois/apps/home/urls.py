@@ -17,8 +17,7 @@ from django import views
 from django.contrib import admin
 from django.urls import path,include
 
-from .views import baseview, consultasView,elementsview, examenView,genericview, homeView, indexcview, entrenamientoview, loginView, resultadosview
-
+from .views import *
 urlpatterns = [
     path('base/', baseview.as_view(), name='base'),
     path('elements/', elementsview.as_view(), name='elements'),
@@ -29,6 +28,8 @@ urlpatterns = [
     path('home/', homeView.as_view(), name='home'),
     path('login/', loginView.as_view(), name='login'),
     path('examen/', examenView.as_view(),name='examen'),
-    path('consulta/', consultasView.as_view(), name='consutla'),
 
+
+    path('preguntas/<int:pk>/', preguntasView, name='preguntasView'),
+    # path('preguntas/', preguntas.as_view(), name='preguntas'),
 ]
