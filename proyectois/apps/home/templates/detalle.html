@@ -1,19 +1,8 @@
 {% extends 'generic.html' %}
 {% load static %}
 
-{%block titulo %}Temas Algebra{%endblock%}
-
-{%block tgrande %}<header id="header">
-    <a href="{% url 'material' %}" class="logo"><strong>Regresar </strong></a>
-    <ul class="icons">
-        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-        <li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-        <li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
-    </ul>
-</header>{%endblock%}
 {% csrf_token %}
+{%block titulo %}Temas {{object.IdArea.nombreArea}} {%endblock%}
 {%block grande%} {{object.IdArea.nombreArea}} {%endblock%}
 
 {%block contenido%}
@@ -23,7 +12,12 @@
 <article>
     <h3>{{object.temaNombre}}</h3>
     <p>{{object.informacion}}</p>
-    <p>{{datos.count}}</p>
+    <li><img src="{{ object.imagen }}"></li>
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe width="720" height="405" src="{{object.videolink}}" title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+        gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
     
 
     <ul class="actions">

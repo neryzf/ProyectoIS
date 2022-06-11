@@ -2302,3 +2302,27 @@ tr:hover td{
   
 
 }
+
+#menus{
+
+  margin:0;padding:0;box-sizing:border-box;font-size:0;
+
+}
+#menus nav a{
+  text-decoration:none;
+  color:inherit;
+  font-size:30px;
+  } 
+ #menus nav li{
+  display:inline-block;
+  width:20%;
+  padding:2% 10px;
+  background-color:#7E97A3;
+  border:1px solid #7E97A3;
+  text-align:center;
+  color:#fff;
+  }
+  #menus nav li:hover{
+  background-color:#fff;
+  color:#000;
+  }

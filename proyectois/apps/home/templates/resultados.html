@@ -7,71 +7,67 @@
 {% endblock %}
 
 {%block header%}
-<a href="{% url 'resultados' %}" class="logo"><strong>Bienvenido</strong> A la sección de resultados</a>
-									
-									<ul class="icons">
-										
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
-									</ul>
-
+<div id="menus">
+  <nav><ul>
+    <li><a href="{% url 'home'%}">Inicio</a></li>
+    <li><a href="{% url 'entrenamiento' %}">Entrenamiento</a></li>
+    <li><a href="{% url 'resultados' %}">Resultado</a></li>
+    <li><a href="{% url 'material' %}">Material Didactico</a></li>
+    <li><a href="{% url 'index' %}">Cerrar Sesión</a></li>
+  </ul></nav>
+  </div>
 {%endblock%}
+
 
 {%block banner%}
-
-
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th>No.</th><th>Fecha.</th><th>Tipo de Entrenamiento.</th><th>Porcentaje de Aciertos.</th><th>PDF.</th>
-            </tr>
-        </thead>
-        <tr>
-      
-          <td>Celda 1</td>     
-          <td>Celda 2</td>      
-          <td>Celda 3</td>   
-          <td>Celda 4</td>   
-          <td>Celda 5</td>
-      
-        </tr>
-      
-        <tr>
-      
-          <td>Celda 6</td>     
-          <td>Celda 7</td>     
-          <td>Celda 8</td>    
-          <td>Celda 9</td>
-          <td>Celda 10</td>
-      
-        </tr>
-
-        <tr>
-      
-          <td>Celda 6</td>     
-          <td>Celda 7</td>     
-          <td>Celda 8</td>    
-          <td>Celda 9</td>
-          <td>Celda 10</td>
-      
-        </tr>
-
-        <tr>
-      
-          <td>Celda 6</td>     
-          <td>Celda 7</td>     
-          <td>Celda 8</td>    
-          <td>Celda 9</td>
-          <td>Celda 10</td>
-      
-        </tr>
-      
-      </table>
-
-
+<section>
+  <header class="major">
+    <h2>Resultados</h2>
+  </header>
+  <div class="features">
+    <article>
+                            <span><a href="{% url 'resari' %}" class="image"><img src="{% static 'images/aritmetica.png' %}" alt=""  width="100" height="100"/></a></span>
+      <div class="content">
+                                <h3>Aritmética</h3>
+        <p><b>Click en ver para ver sus resultados en aritmética</b></p>
+<ul class="actions">
+<li><a href="{% url 'resari' %}" class="button">Ver más</a></li>
+</div>
+    </article>
+    <article>
+<span><a href="{% url 'resal'  %}" class="image"><img src="{% static 'images/algebra.png' %}" alt="" width="100" height="100" /></a></span>
+      <div class="content">
+                                <h3>Algebra</h3>
+        <p><b>Click en ver sus resultados en algebra</b></p>
+<ul class="actions">
+<li><a href="{% url 'resal'  %}" class="button">Ver más</a></li>
+</div>
+    </article>
+    <article>
+<span><a href="{% url 'restri' %}" class="image"><img src="{% static 'images/geometria.png' %}" alt="" width="100" height="100" /></a></span>
+      <div class="content">
+                                <h3>Trigonometria</h3>
+        <p><b>Click en ver sus resultados en Trigonometria</b></p>
+<ul class="actions">
+<li><a href="{% url 'restri' %}" class="button">Ver más</a></li>
+</div>
+    </article>
+    <article>
+<span><a href="{% url 'rescon' %}" class="image"><img src="{% static 'images/conjuntos.png' %}" alt="" width="100" height="100" /></a></span>
+      <div class="content">
+                                <h3>Conjuntos</h3>
+        <p><b>Click en ver para ver sus resultados en conjuntos</b></p>
+<ul class="actions">
+<li><a href="{% url 'rescon' %}" class="button">Ver más</a></li>
+</div>
+    </article>
+  </div>
+</section>
 {%endblock%}
 {%block sec1%}
+{%endblock%}
+{%block sec2%}
+{%endblock%}
+
+{%block menu%}
 {%endblock%}

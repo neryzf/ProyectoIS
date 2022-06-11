@@ -6,6 +6,15 @@
 {% endblock %}
 
 {%block header%}
+<div id="menus">
+  <nav><ul>
+    <li><a href="{% url 'home'%}">Inicio</a></li>
+    <li><a href="{% url 'entrenamiento' %}">Entrenamiento</a></li>
+    <li><a href="{% url 'resultados' %}">Resultado</a></li>
+    <li><a href="{% url 'material' %}">Material Didactico</a></li>
+    <li><a href="{% url 'index' %}">Cerrar Sesión</a></li>
+  </ul></nav>
+  </div>
 {%endblock%}
 
 {%block banner%}
@@ -33,27 +42,25 @@
       </div>
     </div>
   </div>
-  
-
-
-{%for i in object_list%}
+<!--No tocar nada de esto-->
 <section>
-    <header class="major">
-        <h2>{{i.nombreArea}}</h2>
-    </header>
-    <div class="posts">
+  <header class="major">
+    <h2>Entrenamiento por examenes</h2>
+  </header>
+{%for i in object_list%}
+
+  <div class="posts">
         <article>
+            <h2>{{i.nombreArea}}</h2>
             <p>{{i.informacion}}</p>
             <ul class="actions">
-                <button type ="button" class="btn btn-link modal-button" data-pk="../preguntas/{{i.pk}}" data-quiz="{{i.nombreArea}}" data-bs-toggle="modal"
+                <button type ="button large" class="btn btn-link modal-button" data-pk="../preguntas/{{i.pk}}" data-quiz="{{i.nombreArea}}" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">{{i.nombreArea}}</button>
             </ul>
         </article>
-    </div>
-</section>
-
-
+  </div>
 {%endfor%}
+</section>
 
 {%endblock%}
 {%block menu%}

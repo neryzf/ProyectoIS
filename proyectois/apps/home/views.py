@@ -1,4 +1,3 @@
-
 from cgi import print_form
 from django.shortcuts import redirect, render
 from django.views.generic import *
@@ -31,6 +30,59 @@ class indexcview(TemplateView):
 
 class resultadosview(TemplateView):
     template_name='resultados.html'
+
+class resultalg(ListView):
+    model = Estadisticas
+    template_name = 'resdetail.html'
+    paginate_by = 1
+
+    def get_queryset(self, *args, **kwargs):
+
+        qs = super(resultalg, self).get_queryset(*args, **kwargs)
+        qs = qs.filter(area=1)
+
+
+        return qs
+
+class resultcon(ListView):
+    model = Estadisticas
+    template_name = 'resdetail.html'
+    paginate_by = 1
+
+    def get_queryset(self, *args, **kwargs):
+
+        qs = super(resultcon, self).get_queryset(*args, **kwargs)
+        qs = qs.filter(area=2)
+
+
+        return qs
+
+class resultrigo(ListView):
+    model = Estadisticas
+    template_name = 'resdetail.html'
+    paginate_by = 1
+
+    def get_queryset(self, *args, **kwargs):
+
+        qs = super(resultrigo, self).get_queryset(*args, **kwargs)
+        qs = qs.filter(area=3)
+
+
+        return qs
+
+class resultari(ListView):
+    model = Estadisticas
+    template_name = 'resdetail.html'
+    paginate_by = 1
+
+    def get_queryset(self, *args, **kwargs):
+
+        qs = super(resultari, self).get_queryset(*args, **kwargs)
+        qs = qs.filter(area=4)
+
+
+        return qs
+
 
 class homeView(TemplateView):
     template_name = 'home.html'

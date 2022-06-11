@@ -22,16 +22,15 @@
 						<div class="inner">
 
 							<!-- Header -->
-							{%block tgrande %}<header id="header">
-									<a href="{% url 'base' %}" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
-									</ul>
-								</header>{%endblock %}
+							<div id="menus">
+								<nav><ul>
+								  <li><a href="{% url 'home'%}">Inicio</a></li>
+								  <li><a href="{% url 'entrenamiento' %}">Entrenamiento</a></li>
+								  <li><a href="{% url 'resultados' %}">Resultado</a></li>
+								  <li><a href="{% url 'material' %}">Material Didactico</a></li>
+								  <li><a href="{% url 'index' %}">Cerrar Sesión</a></li>
+							  </ul></nav>
+							  </div>
 
 							<!-- Content -->
 								<section>

@@ -3,15 +3,20 @@
 
 {%block header%}
 
+
 {%endblock%}
-{%block sesion%} 
-<div id="sesion">
-    <a href="#" >
-    <div id="inicio">
-        <h3>Cerrar Sesion</h3>
-    </div>
-</a>
+{%block sesion%}
+<div id="menus">
+  <nav><ul>
+    <li><a href="{% url 'home'%}">Inicio</a></li>
+    <li><a href="{% url 'entrenamiento' %}">Entrenamiento</a></li>
+    <li><a href="{% url 'resultados' %}">Resultado</a></li>
+    <li><a href="{% url 'material' %}">Material Didactico</a></li>
+    <li><a href="{% url 'index' %}">Cerrar Sesión</a></li>
+</ul></nav>
 </div>
+
+
 {%endblock%}
 
 
@@ -30,5 +35,37 @@
 {%block sec1%}
 {%endblock%}
 {%block sec2%}
+<section>
 
+
+
+    <div class="posts">
+        <article>
+            <a href="{% url 'resultados' %}" class="image"> <img src="{% static 'images/resultado.png' %}"  alt="" /></a>
+            <h3>Resultado</h3>
+            <p>En esta sección podrá visualizar los resultados de su entrenamiento.</p>
+            <ul class="actions">
+                <li><a href="#" class="button">Ingresar</a></li>
+            </ul>
+        </article>
+        <article>
+            <a href="{% url 'entrenamiento' %}" class="image"><img src="{% static 'images/entrenamiento.png' %}"  alt="" /></a>
+            <h3>Entrenamiento</h3>
+            <p>En esta sección podrá ingresar al área de entrenamiento.</p>
+            <ul class="actions">
+                <li><a href="{% url 'entrenamiento' %}" class="button">Ingresar</a></li>
+            </ul>
+        </article>
+        <article>
+            <a href="{% url 'material' %}" class="image"> <img src="{% static 'images/materiald.png' %}"  alt="" /></a>
+            <h3>Material Didáctico</h3>
+            <p>En esta sección encontrara material didáctico para su entrenamiento.</p>
+            <ul class="actions">
+                <li><a href="{% url 'material' %}" class="button">Ingresar</a></li>
+            </ul>
+        </article>
+    </div>
+</section>
+</div>
+</div>
 {%endblock%}

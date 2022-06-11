@@ -23,25 +23,30 @@
 <table border="1" class="table ">
 <thead class="thead-dark">
     <tr>
-        <td style="color:#000000">Nombre</td>
-        <td style="color:#000000">Vista Previa</td>
         <td style="color:#000000">Area</td>
-        <td style="color:#000000">Ingresa para ver</td>
+        <td style="color:#000000">Fecha</td>
+        <td style="color:#000000">Porcentaje</td>
+        <td style="color:#000000">Nombre Usuario</td>
         
         
     </tr>
 </thead>
 
 
+
 {% for est in object_list %}
+{% if user.is_authenticated%}
     <tr>
-    <td style="color:#000000">{{est.temaNombre}} </td>
-    <td style="color:#000000">{{est.informacion}}</td>
-    <td style="color:#000000">{{est.IdArea}}</td>
-    <td style="color:#000000"><a href="{% url 'detalle' est.id %}">Ver más</a></td>
-   
+        
+    <td style="color:#000000">{{est.area.nombreArea}} </td>
+    <td style="color:#000000">{{est.fecha}}</td>
+    <td style="color:#000000">{{est.porcentaje}}</td>
+    <td style="color:#000000">{{request.user}}</td>
+    
     </tr>
+{% endif %}
 {% endfor %}
+
 
 
 {% if is_paginated %}
@@ -88,6 +93,10 @@
 </div>
 {%endif%}
 
+<ul class="actions">
+    <input type="button" value="Página anterior" onClick="history.go(-1);">
+</ul>
+</div>
 {%endblock%}
 
 
