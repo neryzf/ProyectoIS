@@ -139,7 +139,7 @@ class temas(models.Model):
     temaNombre = models.CharField('Tema', max_length=100, unique=True)
     informacion = models.TextField('Informacion', max_length=5000) 
     videolink=models.URLField('Link')
-    imagen = models.FileField('Imagen')
+    imagen = models.FileField('Imagen', blank=True)
     IdArea= models.ForeignKey(
         'areas',
         on_delete=models.CASCADE,
