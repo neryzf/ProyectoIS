@@ -1,6 +1,6 @@
 
 from django.shortcuts import redirect, render
-from django.views.generic import TemplateView, ListView
+from django.views.generic import *
 from django.contrib.auth.views import LoginView
 
 from .models import *
@@ -61,3 +61,66 @@ class entrenamientoview(ListView):
 def preguntasView(request, pk):
     quiz = areas.objects.get(pk=pk)
     return render(request, 'preguntas.html',{'obj':quiz})
+
+
+
+
+class materialview(TemplateView):
+    template_name='material.html'
+
+class temaslist1(ListView):
+    model = temas
+    template_name = 'temasalg.html'
+    paginate_by = 5
+
+    def get_queryset(self, *args, **kwargs):
+
+        qs = super(temaslist1, self).get_queryset(*args, **kwargs)
+        qs = qs.filter(IdArea=1)
+
+
+        return qs
+
+class temaslist2(ListView):
+    model = temas
+    template_name = 'temasalg.html'
+    paginate_by = 5
+
+    def get_queryset(self, *args, **kwargs):
+
+        qs = super(temaslist2, self).get_queryset(*args, **kwargs)
+        qs = qs.filter(IdArea=2)
+
+
+        return qs
+
+class temaslist3(ListView):
+    model = temas
+    template_name = 'temasalg.html'
+    paginate_by = 5
+
+    def get_queryset(self, *args, **kwargs):
+
+        qs = super(temaslist3, self).get_queryset(*args, **kwargs)
+        qs = qs.filter(IdArea=3)
+
+
+        return qs
+
+class temaslist4(ListView):
+    model = temas
+    template_name = 'temasalg.html'
+    paginate_by = 5
+
+    def get_queryset(self, *args, **kwargs):
+
+        qs = super(temaslist4, self).get_queryset(*args, **kwargs)
+        qs = qs.filter(IdArea=4)
+
+
+        return qs
+
+
+class detallelist(DetailView):
+    model = temas
+    template_name = 'detalle.html'

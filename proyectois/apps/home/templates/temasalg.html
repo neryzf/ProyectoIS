@@ -1,0 +1,96 @@
+{% extends 'generic.html' %}
+{% load static %}
+
+{%block titulo %}Temas Algebra{%endblock%}
+
+{%block tgrande %}<header id="header">
+    <a href="{% url 'material' %}" class="logo"><strong>Regresar </strong></a>
+    <ul class="icons">
+        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+    </ul>
+</header>{%endblock%}
+
+{%block grande%}{%endblock%}
+
+{%block contenido%}
+
+<div class="div-3" >
+    <h1 style="color:#000000">Temas</h1>
+<table border="1" class="table ">
+<thead class="thead-dark">
+    <tr>
+        <td style="color:#000000">Nombre</td>
+        <td style="color:#000000">información</td>
+        <td style="color:#000000">Area</td>
+        
+        
+    </tr>
+</thead>
+
+
+{% for est in object_list %}
+    <tr>
+    <td style="color:#000000">{{est.temaNombre}} </td>
+    <td style="color:#000000">{{est.informacion}}</td>
+    <td style="color:#000000">{{est.IdArea}}</td>
+    <td style="color:#000000"><a href="{% url 'detalle' est.id %}">Ver más</a></td>
+   
+    </tr>
+{% endfor %}
+
+
+{% if is_paginated %}
+<div class="mt-2">
+    <ul class="pagination">
+
+        {% if page_obj.has_previous%}
+        <li class="page-item">  
+        <a href="?page={{page_obj.previous_page_number}}" class="button">Anterior</a>
+        </li>
+        {% else %}
+         <li class="page-item disabled"> 
+            <span class="button disabled">Anterior</span> 
+            
+         </li>
+        {% endif %}
+
+        {%for i in paginator.page_range%}
+
+            {%if page_obj.number == i %}
+        <li class="page-item">  
+        <a href="?page={{i}}" class="page active">{{i}}</a>
+        </li>
+            {%else%}
+            <li class="page-item">  
+                <a href="?page={{i}}" class="page">{{i}}</a>
+                </li>   
+            {%endif%}
+        {%endfor%}
+
+
+        {% if page_obj.has_next%}
+        <li class="page-item">  
+        <a href="?page={{page_obj.next_page_number}}" class="button">siguiente</a>
+         </li>
+         {% else %}
+         <li class="page-item disabled"> 
+            <span class="button disabled">siguiente</span> 
+            
+         </li>
+
+         {% endif %}
+    </ul>
+</div>
+{%endif%}
+
+{%endblock%}
+
+
+
+{%block menu%}
+
+{%endblock%}

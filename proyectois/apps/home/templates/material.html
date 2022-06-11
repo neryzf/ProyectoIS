@@ -1,0 +1,59 @@
+{% extends 'generic.html' %}
+{% load static %}
+
+{%block titulo %}Material Didactico{%endblock%}
+
+{%block tgrande %}<header id="header">
+    <a href="{% url 'material' %}" class="logo"><strong>Material </strong>Didactico</a>
+    <ul class="icons">
+        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+    </ul>
+</header>{%endblock%}
+
+{%block grande%}Material Didactico{%endblock%}
+
+{%block contenido%}
+ <h2> Areas </h2>
+
+<hr class="major" />
+<article>
+<h3>Aritmética</h3>
+<a href="{%url 'mari'%}" class="image"><img src="{% static 'images/aritmetica.png' %}" alt=""  width="200" height="200"/></a>
+            
+            <p><b>Click en ver para ir el material didactico de aritmética</b></p>
+            <ul class="actions">
+                <li><a href="{%url 'mari'%}" class="button">Ver más</a></li>
+</article>
+<hr class="major" />
+<article>
+    <a href="{%url 'malgebra'%}" class="image"><img src="{% static 'images/algebra.png' %}" alt="" width="200" height="200" /></a>
+    <h3>Álgebra</h3>
+    <p>Algebra es la rama de la matemática que estudia la cantidad considerada del modo más general posible.</p>
+    <p><b>Click en ver para ir al material didactico de álgebra</b></p>
+    <ul class="actions">
+        <li><a href="{%url 'malgebra'%}" class="button">Ver más</a></li>
+    </ul>
+</article>
+<hr class="major" />
+<article>
+    <a href="{%url 'mtrigo'%}" class="image"><img src="{% static 'images/geometria.png' %}" alt="" width="200" height="200" /></a>
+    <h3>Trigonometria</h3>
+    <p><b>Click en ver para ir al material didactico de trigonometria</b></p>
+    <ul class="actions">
+        <li><a href="{%url 'mtrigo'%}" class="button">Ver más</a></li>
+    </ul>
+</article>
+<hr class="major" />
+<article>
+    <a href="{%url 'mconjuntos'%}" class="image"><img src="{% static 'images/geometria.png' %}" alt="" width="200" height="200" /></a>
+    <h3>Conjuntos</h3>
+    <p><b>Click en ver para ir al material didactico de conjuntos</b></p>
+    <ul class="actions">
+        <li><a href="{%url 'mconjuntos'%}" class="button">Ver más</a></li>
+    </ul>
+</article>
+{%endblock%}

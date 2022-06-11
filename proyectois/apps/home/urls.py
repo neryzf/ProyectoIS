@@ -24,6 +24,14 @@ urlpatterns = [
     path('generic/', genericview.as_view(), name='generic'),
     path('index/', indexcview.as_view(), name='index'),
     path('entrenamiento/', entrenamientoview.as_view(), name='entrenamiento'),
+
+    path('material/', materialview.as_view(), name='material'),
+    path('malgebra/', temaslist1.as_view(), name='malgebra'),
+    path('mconjuntos/', temaslist2.as_view(), name='mconjuntos'),
+    path('mtrigo/', temaslist3.as_view(), name='mtrigo'),
+    path('mari/', temaslist4.as_view(), name='mari'),
+    path('detalle/<int:pk>/', detallelist.as_view(), name='detalle'),
+
     path('resultados/', resultadosview.as_view(), name='resultados'),
     path('home/', homeView.as_view(), name='home'),
     path('login/', loginView.as_view(), name='login'),
