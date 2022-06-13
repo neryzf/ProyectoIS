@@ -17,7 +17,7 @@ from xml.dom.minidom import NamedNodeMap
 from django import views
 from django.contrib import admin
 from django.urls import path,include
-
+from . import views
 from .views import *
 urlpatterns = [
     path('base/', baseview.as_view(), name='base'),
@@ -45,6 +45,7 @@ urlpatterns = [
 
     path('home/', homeView.as_view(), name='home'),
     path('login/', loginView.as_view(), name='login'),
+    path('crear/', views.Crear, name = 'crear'),
     path('examen/', examenView.as_view(),name='examen'),
 
 

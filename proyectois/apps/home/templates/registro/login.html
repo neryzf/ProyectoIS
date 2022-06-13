@@ -9,6 +9,7 @@
 {%endblock%}
 
 {%block tituloIndex%}
+<title>Inicio de Sesión</title>
 <header>
     <h1>LOGIN</h1>
 </header>
@@ -28,6 +29,7 @@
       <label class="form-label" for="form2Example2">{{ form.password.label_tag}}</label>
     </div>
     <button type="submit" class="btn btn-primary btn-block mb-4">Ingresar</button>
+    <li><a href="{% url 'crear' %}">No tienes cuenta, registrate</a></li>
 
 </form>
 {%endblock%}

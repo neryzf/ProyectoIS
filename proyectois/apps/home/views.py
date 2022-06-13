@@ -3,6 +3,8 @@ from django.shortcuts import redirect, render
 from django.views.generic import *
 from django.contrib.auth.views import LoginView
 
+from .forms import CrearUsuario
+
 from .models import *
 
 from django.core.paginator import *
@@ -249,3 +251,21 @@ class temaslist4(ListView):
 class detallelist(DetailView):
     model = temas
     template_name = 'detalle.html'
+
+#Permite poder habilitar el view para crear el formulario de creacion de usuario
+def Crear(request):
+    form = CrearUsuario()
+
+    if request.method == "POST":
+        form = CrearUsuario(request.POST)
+
+        if form.is_valid():
+            print("Valido")
+            form.save()
+            form.cleaned_data
+            return redirect('index')
+        else:
+            form = CrearUsuario()
+            print("Invalido")
+
+    return render(request,'registro/crear.html',{'form': form})
