@@ -47,19 +47,29 @@
   <header class="major">
     <h2>Entrenamiento por examenes</h2>
   </header>
-{%for i in object_list%}
+
 
   <div class="posts">
         <article>
-            <h2>{{i.nombreArea}}</h2>
-            <p>{{i.informacion}}</p>
+            <h2>Aritmética</h2>
             <ul class="actions">
-                <button type ="button large" class="btn btn-link modal-button" data-pk="../preguntas/{{i.pk}}" data-quiz="{{i.nombreArea}}" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">{{i.nombreArea}}</button>
+               <!--  <button type ="button large" class="btn btn-link modal-button" data-pk="../preguntas/{{i.pk}}" data-quiz="{{i.nombreArea}}" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"></button> -->
+                    <button><a href=" https://docs.google.com/forms/d/e/1FAIpQLSezzTn49GAwFV6UFk0K7hw0fSDeH7lsYtWMhss_RXu-907UbQ/viewform?usp=sf_link" target="_blank"> Ingresar</a></button>
+                  
             </ul>
+          <ul>
+            <h2>Algebra</h2>
+            <button><a href=" https://docs.google.com/forms/d/e/1FAIpQLSdDVt39ICATG6xLFiL6zPkkRtXKTXvUtAIrx0iuj3nU-oabbQ/viewform?usp=sf_link" target="_blank"> Ingresar</a></button>
+          </ul>
+          <ul>
+            <h2>Trigonometría</h2>                   
+                    <button><a href=" https://docs.google.com/forms/d/e/1FAIpQLSdC1ic3l2u3x5TE1kPklOXn_PqvCKJYadS7kSHkyJ5iv0XW9w/viewform?usp=sf_link" target="_blank"> Ingresar</a></button>
+                  </ul>
+
         </article>
   </div>
-{%endfor%}
+
 </section>
 
 {%endblock%}

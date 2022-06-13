@@ -20,9 +20,9 @@ $.ajax({
                 `
                 answers.forEach(answer=>{
                     quizBox.innerHTML += `
-                    <div class="form-check">
+                    <div>
                         <input type="radio" class="ans" id="${question}-${answer}" name="${question}" value="${answer}">
-                        <h3><label class="form-check-label" for="${question}">${answer}</label></h3>
+                        <h3><label for="${question}">${answer}</label></h3>
                     </div>
                     `
                 })

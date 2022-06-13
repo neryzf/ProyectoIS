@@ -84,6 +84,40 @@ class Grado(models.Model):
     def __str__(self):
         return '%s' % (self.nombre)
 
+class areas(models.Model):
+    nombreArea = models.CharField('Area', max_length=100, unique=True)
+    informacion = models.TextField('Informacion', max_length=5000)
+
+    def __str__(self):
+        return f'{self.nombreArea}'
+    
+    def get_reppreguntas(self):
+        preguntas = list(self.reppreguntas_set.all())
+        random.shuffle(preguntas)
+        return preguntas[:5]
+
+class repPreguntas(models.Model):
+    pregunta= models.TextField('Preguntas',  max_length=5000)
+    
+    IdArea= models.ForeignKey(
+        'areas',
+        on_delete=models.CASCADE
+    )
+    def __str__(self):
+        return f'{self.pregunta}'
+    
+    def get_respuestass(self):
+        return self.respuestas_set.all()
+
+class respuestas(models.Model):
+    respuesta = models.CharField('Respuestas', max_length=1000)
+    correcta = models.BooleanField(default=False)
+    preguntas = models.ForeignKey('repPreguntas', on_delete=models.CASCADE)
+
+    
+    def __str__(self):
+        return f"preguntas: {self.preguntas.pregunta},respuesta:{self.respuesta}, correcta:{self.correcta}"
+
 class Estadisticas(models.Model):
     area = models.ForeignKey('areas', on_delete=models.CASCADE)
     fecha = models.DateField('Fecha', auto_now_add=True)
@@ -111,32 +145,6 @@ class estadisticasPreguntas(models.Model):
     def __str__(self):
         return f'{self.IdEstadistica},{self.IdPregunta}'
 
-class repPreguntas(models.Model):
-    pregunta= models.TextField('Preguntas',  max_length=5000)
-    
-    IdArea= models.ForeignKey(
-        'areas',
-        on_delete=models.CASCADE,
-        default=1
-    )
-    def __str__(self):
-        return f'{self.pregunta}'
-    
-    def get_respuestass(self):
-        return self.respuestas_set.all()
-
-class respuestas(models.Model):
-    respuesta = models.CharField('Respuestas', max_length=1000)
-    correcta = models.BooleanField(default=False)
-    preguntas = models.ForeignKey('repPreguntas', on_delete=models.CASCADE)
-
-    
-    def __str__(self):
-        return f"preguntas: {self.preguntas.pregunta},respuesta:{self.respuesta}, correcta:{self.correcta}"
-
-
-
-
 class temas(models.Model):
     temaNombre = models.CharField('Tema', max_length=100, unique=True)
     informacion = models.TextField('Informacion', max_length=5000) 
@@ -152,20 +160,7 @@ class temas(models.Model):
 
     def get_videos(self):
         return self.videos_set.all()
-
-
-class areas(models.Model):
-    nombreArea = models.CharField('Area', max_length=100, unique=True)
-    informacion = models.TextField('Informacion', max_length=5000)
-
-    def __str__(self):
-        return f'{self.nombreArea}'
-    
-    def get_reppreguntas(self):
-        preguntas = list(self.reppreguntas_set.all())
-        random.shuffle(preguntas)
-        return preguntas[:10]
-
+        
 class ejemplos(models.Model):
     titulo = models.CharField('Titulo', max_length=100, unique=True)
     contenido= models.TextField('Contenido', max_length=5000)

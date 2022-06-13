@@ -137,7 +137,7 @@ def preguntasDatosView(request, pk):
 def save_quiz_view(request, pk):
     #print(request.POST)
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        questions=[]
+        preguntas=[]
         data = request.POST
         data_ = dict(data.lists())
 
@@ -145,8 +145,9 @@ def save_quiz_view(request, pk):
 
         for k in data_.keys():
             print('key: ', k)
-            question = repPreguntas.objects.filter(pregunta = k)
-            questions.append(question)
+            question = repPreguntas.objects.get(pregunta=k)
+            preguntas.append(question)
+            
         
        
 
@@ -158,13 +159,15 @@ def save_quiz_view(request, pk):
         results = []
         correct_answer = None
 
-        for q in questions:
-            a_select= request.POST.get(q)
-            
+        
+
+        for q in preguntas:
+            a_select= request.POST.get(q.pregunta)
             print('selected', a_select)
+            
 
             if a_select != "":
-                question_answers= respuestas.objects.filter(preguntas = q)
+                question_answers= respuestas.objects.get(preguntas_id = q)
                 for a in question_answers:
                     if a_select == a.respuesta:
                         if a.correct:
@@ -181,13 +184,9 @@ def save_quiz_view(request, pk):
         
         score_ = score * multiplier
 
-        Estadisticas.objects.create(area= quiz, user = user, porcentaje =score_ )
+        Estadisticas.objects.create(area= quiz, IdAlumno = user, porcentaje =score_ )
 
-        if score_ >= quiz.required_score_to_pass:
-            return JsonResponse({'passed': True, 'score': score_, 'results': results})
-        else:
-            return JsonResponse({'passed': False, 'score': score_, 'results': results})
-
+    return JsonResponse({'text':'work'})
 
 
 
