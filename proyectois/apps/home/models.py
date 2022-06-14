@@ -95,7 +95,7 @@ class areas(models.Model):
     def get_reppreguntas(self):
         preguntas = list(self.reppreguntas_set.all())
         random.shuffle(preguntas)
-        return preguntas[:5]
+        return preguntas[:10]
 
 class repPreguntas(models.Model):
     pregunta= models.TextField('Preguntas',  max_length=5000)

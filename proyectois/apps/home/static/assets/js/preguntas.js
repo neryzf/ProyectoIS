@@ -1,6 +1,9 @@
-console.log("HOLAAAA")
+
 const url = window.location.href
 const quizBox = document.getElementById('quiz-box')
+const resulQ = document.getElementById('wrapper')
+
+
 
 
 
@@ -37,6 +40,10 @@ $.ajax({
 
 const quizForm = document.getElementById('quiz-form')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
+const scores = document.getElementById('result-box')
+const resultbox= document.getElementById('score-box')
+
+
 
 
 const sendData = () => {
@@ -59,7 +66,36 @@ const sendData = () => {
         url: `${url}save/`,
         data: data,
         success: function(response){
-            console.log(response)
+            //console.log(response)
+            const results = response.Resultados
+            console.log(results)
+
+            resultbox.innerHTML+=`<h2>Tuviste una calificación del ${response.Calificación}% de 100%</h2>`
+
+            results.forEach(res =>{
+                const resDiv = document.createElement("div")
+                quizForm.remove()
+                
+                for(const [question, resp] of Object.entries(res)){
+                    
+                    resDiv.innerHTML+= question
+                    const cls = ['container', 'p-3', 'text-light','h1']
+                    resDiv.classList.add(...cls)
+
+                    if(resp=='Respuesta_Incorrecta'){
+                        resDiv.innerHTML += '- Sin Resultados'
+                        resDiv.classList.add('bg-danger')
+                    }
+                    else{
+                        const answer = resp['Respuesta']
+                        resDiv.classList.add('bg-success')
+                        resDiv.innerHTML+= ` Respuesta: ${answer}`                        
+                    }
+
+                }              
+                //const body = document.getElementsByTagName('BODY')[0]
+                scores.append(resDiv)
+            })
         },
         error: function(error){
             console.log(error)

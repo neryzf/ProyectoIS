@@ -1,4 +1,5 @@
 from cgi import print_form
+from unittest import result
 from django.shortcuts import redirect, render
 from django.views.generic import *
 from django.contrib.auth.views import LoginView
@@ -11,7 +12,7 @@ from django.core.paginator import *
 from django.http import *
 
 from django.shortcuts import *
-
+from django.shortcuts import HttpResponse
 
 # Create your views here.
 
@@ -136,23 +137,25 @@ def preguntasDatosView(request, pk):
         'data':preg
     })
 
+
+
 def save_quiz_view(request, pk):
     #print(request.POST)
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        
         preguntas=[]
+        ress =[]
         data = request.POST
         data_ = dict(data.lists())
-
+        
         data_.pop('csrfmiddlewaretoken')
 
         for k in data_.keys():
-            print('key: ', k)
-            question = repPreguntas.objects.get(pregunta=k)
-            preguntas.append(question)
+            preguntas.append(k)
+            ress.append(data[k])            
+            #print("Pregunta",preguntas)
+            #print("Respuesta",ress)
             
-        
-       
-
         user = request.user
         quiz = areas.objects.get(pk=pk)
         
@@ -161,34 +164,35 @@ def save_quiz_view(request, pk):
         results = []
         correct_answer = None
 
-        
+        i = 0
+        for q in range(10):
+            print(i)
+            #print(preguntas[i])
 
-        for q in preguntas:
-            a_select= request.POST.get(q.pregunta)
-            print('selected', a_select)
+            #print(ress[i])
+            a_select=preguntas[i]
             
 
             if a_select != "":
-                question_answers= respuestas.objects.get(preguntas_id = q)
+                question_answers= respuestas.objects.filter(respuesta = ress[i])
+            
                 for a in question_answers:
-                    if a_select == a.respuesta:
-                        if a.correct:
-                            score+=1
-                            correct_answer = a.respuesta
-                    else:
-                        if a.correct:
-                            correct_answer = a.respuesta
+                    convertir = a.preguntas.pregunta
 
-                results.append({str(q):{'correct_anserd':correct_answer,'answered':a_select}})
-
+                    if (convertir == preguntas[i] and a.correcta==True):
+                        #print("hola", preguntas[i])
+                        score+=1
+                        results.append({str(q):{'Respuesta_correcta:':ress[i], 'Respuesta':ress[i]}})
+                    
             else:
-                results.append({str(q):{'not answerd':correct_answer,'answered':a_select}})
-        
+                results.append({str(q):'Respuesta_Incorrecta'})
+                        
+            i=i+1
+            
         score_ = score * multiplier
-
         Estadisticas.objects.create(area= quiz, IdAlumno = user, porcentaje =score_ )
 
-    return JsonResponse({'text':'work'})
+        return JsonResponse({'Calificación':score_,'Resultados':results})
 
 
 
